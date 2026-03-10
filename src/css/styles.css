@@ -7,7 +7,7 @@
   --background: hsl(0, 0%, 100%);
   --foreground: hsl(222.2, 84%, 4.9%);
   --muted: hsl(210, 40%, 96.1%);
-  --muted-foreground: hsl(215.4, 16.3%, 46.9%);
+  --muted-foreground: hsl(215deg, 12.68%, 7.97%);
   --card: hsl(0, 0%, 100%);
   --primary: hsl(222.2, 47.4%, 11.2%);
   --primary-foreground: hsl(210, 40%, 98%);
@@ -203,3 +203,46 @@ main {
   font-size: 1.2rem;
   font-weight: bold;
 }
+  .repositories {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .repository-card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 220px;
+    max-width: 340px;
+  }
+
+  .repository-card h3 {
+    font-size: var(--font-md);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--primary);
+  }
+
+  .repository-stats {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .repository-stats span {
+    background: #f3f4f6;
+    border-radius: 0.25rem;
+    padding: 0.4rem 0.8rem;
+    font-size: var(--font-sm);
+    color: var(--muted-foreground);
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }

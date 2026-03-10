@@ -2,7 +2,22 @@ export function showLoading(container) {
     container.innerHTML = '<p class="loading">Carregando...</p>';
 }
 
-export function renderProfile(container, userData) {
+export function renderProfile(container, userData, userRepos) {
+
+    const repositoriesHTML = userRepos && userRepos.length > 0 ? userRepos.map(repo => `
+        <a href="${repo.html_url}" target="_blank">
+            <div class='repository-card'>
+                <h3>${repo.name}</h3>
+                <div class='repository-stats'>
+                    <span>⭐ ${repo.stargazers_count}</span>
+                    <span>🍴 ${repo.forks_count}</span>
+                    <span>👀 ${repo.watchers_count}</span>
+                    <span>💻 ${repo.language || 'Sem linguagem'}</span>
+                </div>
+            </div>
+        </a>`
+    ).join('') : '<p>Sem repositórios disponíveis 😔😔.</p>';
+
     container.innerHTML = `
         <div class = "profile-card">
             <img src="${userData.avatar_url}" alt= "Avatar de ${userData.name}" class="profile-avatar">
@@ -11,6 +26,7 @@ export function renderProfile(container, userData) {
                 <p>${userData.bio || 'Sem biografia disponível 😔😔.'}</p>
             </div>
         </div>
+
         <div class = "profile-counters">
             <div class="followers">
                 <h4>🥷Seguidores</h4>
@@ -20,9 +36,18 @@ export function renderProfile(container, userData) {
                 <h4>🥷Seguindo</h4>
                 <span>${userData.following}</span>
             </div>
+        </div>
+
+        <div class="profile-repositories">
+            <h2>Repositórios</h2>
+            <div class="repositories">
+                ${repositoriesHTML}
+            </div>
         </div>`;
 }
 
 export function clearProfile(container) {
     container.innerHTML = '';
 }
+
+
