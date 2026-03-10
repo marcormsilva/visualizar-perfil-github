@@ -5,6 +5,12 @@ const btnSearch = document.getElementById('btn-search');
 const inputSearch = document.getElementById('input-search');
 const profileResults = document.querySelector('.profile-results');
 
+inputSearch.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        btnSearch.click();
+    }
+});
+
 btnSearch.addEventListener('click', async () => {
     const userName = inputSearch.value;
     if (userName) {
@@ -21,4 +27,5 @@ btnSearch.addEventListener('click', async () => {
         alert('Por favor, digite um nome de usuário do Github.');
     }
 });
+
 
